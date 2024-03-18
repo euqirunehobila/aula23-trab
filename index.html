@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="logo.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <style>
+        * {
+            list-style-type: none;
+            text-decoration: none;
+            font-family: sans-serif;
+        }
+
+        :root {
+            --primary-color: #A27108;
+            --secondary-color: #4E5A5A;
+            --tertiary-color: #78C0E0;
+            --quaternary-color: #449DD1;
+            --quinary-color: #B0FE76;
+
+        }
+
+        body {
+
+            background: url(https://images.pexels.com/photos/208494/pexels-photo-208494.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1);
+            background-size: cover;
+
+            .quiz-container {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                min-height: 90vh;
+                max-width: 1200px;
+                margin: 0 auto;
+            }
+
+            .quiz-content {
+                border-radius: 50px;
+                text-align: center;
+                padding: 25px;
+                background-color: var(--secondary-color);
+                flex-direction: column;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: auto;
+                height: 35vh;
+            }
+
+            h1 {
+                text-decoration: underline;
+                font-weight: 1000;
+                color: white;
+            }
+
+            #pergunta {
+                padding: 25px;
+                color: black;
+                font-weight: 500;
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+
+            #opcoes {
+                display: flex;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            #resultadox {
+                padding: 100px;
+                color: red;
+            }
+
+            button {
+                border: none;
+                border-radius: 12px;
+                background-color: var(--primary-color);
+                padding: 10px 20px;
+                margin: 10px;
+                font-size: 16px;
+                cursor: pointer;
+            }
+
+            button:hover {
+                background-color: var(--quaternary-color);
+            }
+
+            .correto {
+                background-color: #8BC344;
+            }
+
+            .incorreto {
+                background: #FF5722;
+            }
+
+            .footer {
+                width: 80%;
+                border-radius: 13px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 2rem 9%;
+                height: 20px;
+                position: fixed;
+                background-color: var(--secondary-color);
+
+            }
+
+            .footer p {
+                color: var(--tertiary-color);
+                font-weight: 1000;
+            }
+
+            .footer-sci a {
+                color: var(--tertiary-color);
+                width: 60px;
+                height: 60px;
+                display: inline-flex;
+                justify-content: center;
+                align-items: center;
+                border: solid .15rem var(--tertiary-color);
+                border-radius: 50%;
+                overflow: hidden;
+                z-index: 1;
+                font-size: 35px;
+                position: relative;
+                margin-left: 10px;
+
+            }
+
+            .footer-sci a::before {
+                background: var(--tertiary-color);
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                height: 100%;
+                width: 0%;
+                transition: 0.5s;
+                z-index: -1;
+            }
+
+            .footer-sci a:hover::before {
+                width: 100%;
+            }
+
+            .footer-sci a:hover {
+                color: var(--secondary-color);
+            }
+
+            .footer-text p {
+                font-size: 1.6rem;
+            }
+
+            .footer-text span {
+                font-family: body;
+                font-size: 1.6rem;
+                color: white;
+            }
+
+            .footer-text span:hover {
+                color: var(--primary-color);
+                cursor: pointer;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div class="quiz-container">
+
+        <div class="quiz-content">
+
+
+            <h1>Quiz de Perguntas e Respostas</h1>
+            <div id="pergunta"></div>
+            <div id="opcoes"></div>
+            <div id="resultado"></div>
+
+        </div>
+
+
+    </div>
+    <footer class="footer">
+        <div class="footer-sci">
+            <a href="https://www.linkedin.com/in/alibiohenrique"><i class='bx bxl-linkedin-square'></i></a>
+            <a href="https://github.com/alibiohenrique"><i class='bx bxl-github'></i></a>
+            <a href="https://www.youtube.com/@AlibioTv"><i class='bx bxl-youtube' src=""></i></a>
+        </div>
+        <div class="footer-text">
+            <p>Desenvolvido por <a href="https://www.linkedin.com/in/alibiohenrique/?locale=pt_BR"><span>Henrique
+                        Alibio</span></a> &COPY | 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        const perguntas = [
+
+            {
+                pergunta: "Quem criou a linguagem de programação 'PHP'?",
+                opcoes: ["Larry Page", "Tim Ferris", "Joseph Climber", "Rasmus Lerdorf"],
+                resposta: "Rasmus Lerdorf"
+            },
+
+            {
+                pergunta: "Quem inventou o Java Script?",
+                opcoes: ["Brendan Eich", "Tim Berners-Lee", "Larry Page", "Joseph Climber"],
+                resposta: "Brendan Eich"
+            }
+            ,
+            {
+                pergunta: "Que ano foi inventado o Java Script?",
+                opcoes: ["1985", "2000", "1995", "1996"],
+                resposta: "1995"
+            }, {
+                pergunta: "Quem inventou o HTML?",
+                opcoes: ["Larry Page", "Tim Berners-Lee", "Elon Musk", "Joseph Climber"],
+                resposta: "Tim Berners-Lee"
+            },
+            {
+                pergunta: "Js é uma linguagem...?",
+                opcoes: ["Ti", "Tim Berners-Lee", "Elon Musk", "Joseph Climber"],
+                resposta: "Tim Berners-Lee"
+
+            }
+
+        ];
+
+        const perguntaElemento = document.getElementById("pergunta");
+        const opcoesElemento = document.getElementById("opcoes");
+        const resultadoElemento = document.getElementById("resultado");
+
+
+        let indicePerguntaAtual = 0;
+
+        function carregarPergunta() {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            perguntaElemento.textContent = perguntaAtual.pergunta;
+
+            opcoesElemento.innerHTML = "";
+            perguntaAtual.opcoes.forEach(opcao => {
+
+                const botao = document.createElement("button");
+
+                botao.textContent = opcao;
+                botao.addEventListener("click", () => verificarResposta(opcao));
+                opcoesElemento.appendChild(botao);
+            });
+        }
+
+        function verificarResposta(respostaSelecionada) {
+            const perguntaAtual = perguntas[indicePerguntaAtual];
+            if (respostaSelecionada === perguntaAtual.resposta) {
+                resultadoElemento.textContent = "Resposta correta!";
+                resultadoElemento.className = "correto";
+
+            } else {
+                resultadoElemento.textContent = "Resposta incorreta. A resposta correta é: " + perguntaAtual.resposta;
+                resultadoElemento.className = "incorreto"
+            }
+            indicePerguntaAtual++;
+
+            if (indicePerguntaAtual < perguntas.length) {
+                setTimeout(carregarPergunta, 2000);
+            } else {
+                resultadoElemento.textContent = "Quiz concluído!"
+                resultadoElemento.className = "";
+            }
+        }
+        carregarPergunta();
+    </script>
+
+</body>
+
+</html>
